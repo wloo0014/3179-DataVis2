@@ -1,0 +1,60 @@
+{
+	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+	"title": "",
+	"width": 800,
+	"height": 400,
+	"data": {
+		"url": "../data/life_expectancy_ASEAN_cleaned.csv",
+		"format": {
+			"type": "csv",
+			"parse": {
+				"Year": "number",
+				"Population": "number",
+				"Measles": "number",
+				"Polio": "number",
+				"Infant deaths": "number",
+				"Under-five deaths": "number",
+				"Total expenditure": "number",
+				"GDP": "number",
+				"BMI": "number",
+				"Thinness": "number",
+				"Schooling": "number",
+				"Life expectancy": "number"
+			}
+		}
+	},
+	"params": [
+		{
+			"name": "Year",
+			"select": {"type": "point", "fields": ["Year"]},
+			"value": 2000,
+			"bind": {
+				"Year": {"input": "range", "min": 2000, "max": 2015, "step": 1}
+			}
+		}
+	],
+	"transform": [
+		{"filter": {"param": "Year"}}
+	],
+	"mark": "bar",
+	"encoding": {
+		"y": {
+			"field": "Country", "type": "nominal",
+			"axis": null,
+			"sort": "ascending"
+		},
+		"x": {
+			"field": "Life expectancy", "type": "quantitative",
+			"axis": {"format": "s"}
+		},
+		"color": {
+			"field": "Country",
+			"scale": {"range": ["#000000", "#000000", "#000000", "#000000", "#000000", "#000000"]},
+			"legend": {"orient": "top", "title": "Countries"}
+		}
+	},
+	"config": {
+		"view": {"stroke": null},
+		"axis": {"grid": false}
+	}
+}

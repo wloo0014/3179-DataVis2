@@ -16,14 +16,15 @@
 					"url": "data/life_expectancy_ASEAN_cleaned.csv"
 				},
 				"key": "Country",
-				"fields": ["Life expectancy"]
-			}
+				"fields": ["Year", "Life expectancy"]
+			},
+			"as": ["year", "life_expectancy"]
 		}
 	],
 	"mark": {"type": "geoshape"},
 	"encoding": {
 		"color": {
-			"field": "Life expectancy",
+			"field": "life_expectancy",
 		  	"type": "quantitative",
 		  	"scale": {"type": "linear"},
 			"title": "Life Expectancy (Years)"
