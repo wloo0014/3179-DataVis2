@@ -1,0 +1,44 @@
+{
+	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+	"title": "GDP (per capita) of ASEAN Countries (2000-2015)",
+	"width": 800,
+	"height": 400,
+	"data": {
+		"url": "../data/life_expectancy_ASEAN_cleaned.csv",
+		"format": {
+			"type": "csv",
+			"parse": {
+				"Year": "date",
+				"GDP": "number"
+			}
+		}
+	},
+	"transform": [
+		{
+			"calculate": "if(datum.Country === 'Singapore', 1, if(datum.Country === 'Brunei Darussalam', 2, if(datum.Country === 'Malaysia', 3, if(datum.Country === 'Thailand', 4, if(datum.Country === 'Indonesia', 5, if(datum.Country === 'Philippines', 6, if(datum.Country === 'Vietnam', 7, if(datum.Country === 'Laos', 8, if(datum.Country === 'Myanmar', 9, if(datum.Country === 'Cambodia', 10, 11))))))))))",
+			"as": "country_order"
+		}
+	],
+	"mark": "area",
+  	"encoding": {
+    	"x": {
+			"type": "temporal",
+			"field": "Year"
+		},
+    	"y": {
+			"field": "GDP",
+			"type": "quantitative",
+			"scale": {
+				"type": "linear"
+			}
+		},
+    	"color": {
+			"field": "Country",
+			"scale": {"range": ["#e60049", "#0bb4ff", "#50e991", "#e6d800", "#9b19f5", "#ffa300", "#dc0ab4", "#b3d4ff", "#00bfa0", "#7c1158"]}
+		},
+		"order": {
+			"field": "country_order",
+			"sort": "ascending"
+		}
+  }
+}
