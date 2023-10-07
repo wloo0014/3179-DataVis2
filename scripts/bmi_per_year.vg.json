@@ -1,0 +1,40 @@
+{
+	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+	"title": "Average BMI of ASEAN Countries (2000-2015)",
+	"width": 800,
+	"height": 400,
+	"data": {
+		"url": "../data/life_expectancy_ASEAN_cleaned.csv",
+		"format": {
+			"type": "csv",
+			"parse": {
+				"Year": "date",
+				"BMI": "number"
+			}
+		}
+	},
+	"mark": {
+		"type": "line",
+		"point": {
+			"filled": false,
+			"fill": "white"
+		}
+	},
+  	"encoding": {
+    	"x": {
+			"type": "temporal",
+			"field": "Year"
+		},
+    	"y": {
+			"field": "BMI",
+			"type": "quantitative",
+			"scale": {
+				"type": "linear"
+			}
+		},
+    	"color": {
+			"field": "Country",
+			"scale": {"range": ["#e60049", "#0bb4ff", "#50e991", "#e6d800", "#9b19f5", "#ffa300", "#dc0ab4", "#b3d4ff", "#00bfa0", "#7c1158"]}
+		}
+  }
+}
