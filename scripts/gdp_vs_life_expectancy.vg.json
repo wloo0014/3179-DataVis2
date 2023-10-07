@@ -14,9 +14,19 @@
 			}
 		}
 	},
-	
+	"params": [
+		{
+			"name": "param_country",
+			"value": "Singapore",
+			"bind": {
+				"input": "select",
+				"options": ["Brunei Darussalam", "Cambodia", "Indonesia", "Laos", "Malaysia", "Myanmar", "Philippines", "Singapore", "Thailand", "Vietnam"]
+			}
+		}
+	],
 	"transform": [
-		{"filter": "datum.Country === 'Vietnam'"}
+		{"calculate": "round(datum.GDP)", "as": "roundedGDP"},
+		{"filter": "datum.Country == param_country"}
 	],
 	"encoding": {
 		"x": {
@@ -35,7 +45,7 @@
 					"type": "quantitative",
 					"axis": {"format": "s"},
 					"scale": {
-						"domain": [0, 3000]
+						"domain": [0, 50000]
 					}
 				}
 			}
@@ -49,11 +59,11 @@
 			},
 			"encoding": {
 				"y": {
-					"field": "GDP",
+					"field": "roundedGDP",
 					"type": "quantitative",
 					"axis": null,
 					"scale": {
-						"domain": [0, 3000]
+						"domain": [0, 50000]
 					}
 				},
 				"text": {
@@ -73,7 +83,7 @@
 					"type": "quantitative",
 					"axis": {"format": "s"},
 					"scale": {
-						"domain": [73, 77]
+						"domain": [40, 90]
 					}
 				}
 			}
