@@ -1,0 +1,83 @@
+{
+	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+	"title": "ASEAN GDP vs Life Expectancy (2000-2015)",
+	"width": 800,
+	"height": 400,
+	"data": {
+		"url": "../data/life_expectancy_ASEAN_cleaned.csv",
+		"format": {
+			"type": "csv",
+			"parse": {
+				"Year": "number",
+				"GDP": "number",
+				"Life expectancy": "number"
+			}
+		}
+	},
+	
+	"transform": [
+		{"filter": "datum.Country === 'Vietnam'"}
+	],
+	"encoding": {
+		"x": {
+			"field": "Year",
+			"axis": {
+				"labelAngle": 0
+			}
+		}
+	},
+	"layer": [
+		{
+			"mark": "bar",
+			"encoding": {
+				"y": {
+					"field": "GDP",
+					"type": "quantitative",
+					"axis": {"format": "s"},
+					"scale": {
+						"domain": [0, 3000]
+					}
+				}
+			}
+		},
+		{
+			"mark": {
+				"type": "text",
+				"align": "center",
+				"baseline": "middle",
+				"dy": -10
+			},
+			"encoding": {
+				"y": {
+					"field": "GDP",
+					"type": "quantitative",
+					"axis": null,
+					"scale": {
+						"domain": [0, 3000]
+					}
+				},
+				"text": {
+					"field": "GDP",
+					"type": "quantitative"
+				}
+			}
+		},
+		{
+			"mark": {
+				"type": "line",
+				"stroke": "#000000"
+			},
+			"encoding": {
+				"y": {
+					"field": "Life expectancy",
+					"type": "quantitative",
+					"axis": {"format": "s"},
+					"scale": {
+						"domain": [73, 77]
+					}
+				}
+			}
+		}
+	],
+	"resolve": {"scale": {"y": "independent"}}
+}
