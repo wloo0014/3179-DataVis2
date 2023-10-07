@@ -25,34 +25,92 @@
 	},
 	"params": [
 		{
-			"name": "Year",
+			"name": "param_year",
 			"select": {"type": "point", "fields": ["Year"]},
 			"value": 2000,
 			"bind": {
 				"Year": {"input": "range", "min": 2000, "max": 2015, "step": 1}
-			}
+			},
+			"title": "Year"
 		}
 	],
 	"transform": [
-		{"filter": {"param": "Year"}}
+		{"filter": {"param": "param_year"}}
+		
 	],
-	"mark": "bar",
-	"encoding": {
-		"y": {
-			"field": "Country", "type": "nominal",
-			"axis": null,
-			"sort": "ascending"
+	"hconcat": [
+		{
+			"mark": "bar",
+			"encoding": {
+				"y": {
+					"field": "Country",
+					"type": "nominal",
+					"axis": null,
+					"sort": "ascending"
+				},
+				"x": {
+					"field": "Total expenditure",
+					"type": "quantitative",
+					"axis": {"format": "s"},
+					"sort": "descending",
+					"scale": {
+						"domain": [0, 10]
+					}
+				},
+				"color": {
+					"field": "Country",
+					"scale": {"range": ["#e60049", "#0bb4ff", "#50e991", "#e6d800", "#9b19f5", "#ffa300", "#dc0ab4", "#b3d4ff", "#00bfa0", "#7c1158"]},
+					"legend": null
+				}
+			}
 		},
-		"x": {
-			"field": "Life expectancy", "type": "quantitative",
-			"axis": {"format": "s"}
+		{
+			"width": 50,
+			"view": {"stroke": null},
+			"mark": {
+				"type": "text",
+				"align": "center"
+			},
+			"encoding": {
+				"y": {
+					"field": "Country",
+					"type": "ordinal",
+					"axis": null,
+					"sort": "ascending"
+				},
+				"text": {
+					"field": "Country",
+					"type": "nominal"
+				}
+			}
 		},
-		"color": {
-			"field": "Country",
-			"scale": {"range": ["#000000", "#000000", "#000000", "#000000", "#000000", "#000000"]},
-			"legend": {"orient": "top", "title": "Countries"}
+		{
+			"mark": {
+				"type": "bar",
+				"clip": true
+			},
+			"encoding": {
+				"y": {
+					"field": "Country", "type": "nominal",
+					"axis": null,
+					"sort": "ascending"
+				},
+				"x": {
+					"field": "Life expectancy",
+					"type": "quantitative",
+					"axis": {"format": "s"},
+					"scale": {
+						"domain": [50, 90]
+					}
+				},
+				"color": {
+					"field": "Country",
+					"scale": {"range": ["#e60049", "#0bb4ff", "#50e991", "#e6d800", "#9b19f5", "#ffa300", "#dc0ab4", "#b3d4ff", "#00bfa0", "#7c1158"]},
+					"legend": {"orient": "top", "title": "Countries"}
+				}
+			}
 		}
-	},
+	],
 	"config": {
 		"view": {"stroke": null},
 		"axis": {"grid": false}
