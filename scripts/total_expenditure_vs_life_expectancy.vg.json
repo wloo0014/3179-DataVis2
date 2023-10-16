@@ -1,10 +1,14 @@
 {
 	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-	"title": "Total Expenditure vs Life Expectancy",
-	"width": 800,
-	"height": 400,
+	"title": {
+		"text": "Total Expenditure vs Life Expectancy",
+		"fontSize": 20,
+		"anchor": "middle"
+	},
+	"width": "container",
+	"height": 1000,
 	"data": {
-		"url": "data/life_expectancy_ASEAN_cleaned.csv",
+		"url": "https://raw.githubusercontent.com/wloo0014/3179-DataVis2/main/data/life_expectancy_ASEAN_cleaned.csv",
 		"format": {
 			"type": "csv",
 			"parse": {
@@ -26,20 +30,21 @@
 	"params": [
 		{
 			"name": "param_year",
-			"select": {"type": "point", "fields": ["Year"]},
 			"value": 2000,
 			"bind": {
-				"Year": {"input": "range", "min": 2000, "max": 2015, "step": 1}
-			},
-			"title": "Year"
+				"input": "range", "min": 2000, "max": 2015, "step": 1,
+				"name": "Year: "
+			}
 		}
 	],
 	"transform": [
-		{"filter": {"param": "param_year"}}
+		{"filter": "datum.Year == param_year"}
 		
 	],
 	"hconcat": [
 		{
+			"width": 500,
+			"height": 500,
 			"mark": "bar",
 			"encoding": {
 				"y": {
@@ -66,6 +71,7 @@
 		},
 		{
 			"width": 50,
+			"height": 500,
 			"view": {"stroke": null},
 			"mark": {
 				"type": "text",
@@ -85,6 +91,8 @@
 			}
 		},
 		{
+			"width": 500,
+			"height": 500,
 			"mark": {
 				"type": "bar",
 				"clip": true

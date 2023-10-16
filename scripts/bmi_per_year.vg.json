@@ -1,10 +1,14 @@
 {
 	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-	"title": "Average BMI of ASEAN Countries (2000-2015)",
+	"title": {
+		"text": "Average BMI of ASEAN Countries (2000-2015)",
+		"fontSize": 20,
+		"anchor": "middle"
+	},
 	"width": 800,
 	"height": 400,
 	"data": {
-		"url": "../data/life_expectancy_ASEAN_cleaned.csv",
+		"url": "https://raw.githubusercontent.com/wloo0014/3179-DataVis2/main/data/life_expectancy_ASEAN_cleaned.csv",
 		"format": {
 			"type": "csv",
 			"parse": {
@@ -17,7 +21,8 @@
 		"type": "line",
 		"point": {
 			"filled": false,
-			"fill": "white"
+			"fill": "white",
+			"size": 50
 		}
 	},
   	"encoding": {
@@ -35,6 +40,11 @@
     	"color": {
 			"field": "Country",
 			"scale": {"range": ["#e60049", "#0bb4ff", "#50e991", "#e6d800", "#9b19f5", "#ffa300", "#dc0ab4", "#b3d4ff", "#00bfa0", "#7c1158"]}
-		}
-  }
+		},
+		"tooltip": [
+			{"field": "Country", "type": "nominal", "title": "Country"},
+      		{"field": "Year", "type": "temporal", "format": "%Y", "title": "Year"},
+			{"field": "BMI", "type": "quantitative", "format": ",", "title": "GDP per capita ($USD)"}
+		]
+  	}
 }

@@ -1,10 +1,14 @@
 {
 	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-	"title": "GDP (per capita) of ASEAN Countries (2000-2015)",
+	"title": {
+		"text": "GDP (per capita) of South East Asian Countries (2000-2015)",
+		"fontSize": 20,
+		"anchor": "middle"
+	},
 	"width": 800,
 	"height": 400,
 	"data": {
-		"url": "data/life_expectancy_ASEAN_cleaned.csv",
+		"url": "https://raw.githubusercontent.com/wloo0014/3179-DataVis2/main/data/life_expectancy_ASEAN_cleaned.csv",
 		"format": {
 			"type": "csv",
 			"parse": {
@@ -14,6 +18,9 @@
 		}
 	},
 	"transform": [
+		{
+			"calculate": "round(datum.GDP)", "as": "roundedGDP"
+		},
 		{
 			"calculate": "if(datum.Country === 'Singapore', 1, if(datum.Country === 'Brunei Darussalam', 2, if(datum.Country === 'Malaysia', 3, if(datum.Country === 'Thailand', 4, if(datum.Country === 'Indonesia', 5, if(datum.Country === 'Philippines', 6, if(datum.Country === 'Vietnam', 7, if(datum.Country === 'Laos', 8, if(datum.Country === 'Myanmar', 9, if(datum.Country === 'Cambodia', 10, 11))))))))))",
 			"as": "country_order"
@@ -30,7 +37,11 @@
 			"type": "quantitative",
 			"scale": {
 				"type": "linear"
-			}
+			},
+			"axis": {
+				"format": ".2s"
+			},
+			"title": "GDP per capita ($USD)"
 		},
     	"color": {
 			"field": "Country",
@@ -39,6 +50,11 @@
 		"order": {
 			"field": "country_order",
 			"sort": "ascending"
-		}
+		},
+		"tooltip": [
+			{"field": "Country", "type": "nominal", "title": "Country"},
+      		{"field": "Year", "type": "temporal", "format": "%Y", "title": "Year"},
+			{"field": "roundedGDP", "type": "quantitative", "format": ",", "title": "GDP per capita ($USD)"}
+		]
   }
 }

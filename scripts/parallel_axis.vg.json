@@ -4,7 +4,7 @@
 	"width": 800,
 	"height": 400,
 	"data": {
-		"url": "../data/life_expectancy_ASEAN_cleaned.csv",
+		"url": "https://raw.githubusercontent.com/wloo0014/3179-DataVis2/main/data/life_expectancy_ASEAN_cleaned.csv",
 		"format": {
 			"type": "csv",
 			"parse": {
