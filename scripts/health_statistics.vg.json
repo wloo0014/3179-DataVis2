@@ -2,7 +2,7 @@
 	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 	"title": "Different health statistics for different countries",
 	"width": 1000,
-	"height": 400,
+	"height": 600,
 	"data": {
 		"url": "https://raw.githubusercontent.com/wloo0014/3179-DataVis2/main/data/life_expectancy_ASEAN_cleaned.csv",
 		"format": {
@@ -36,14 +36,14 @@
 		{"window": [{"op": "count", "as": "index"}]},
 		{"fold": ["Measles", "Polio", "Infant deaths", "Under-five deaths", "Thinness", "Schooling"]},
 		{
-			"joinaggregate": [
-			  	{"op": "min", "field": "value", "as": "min"},
-			  	{"op": "max", "field": "value", "as": "max"}
-			],
-			"groupby": ["key"]
+			"calculate": "parseInt(datum.value)", "as": "value2"
 		},
 		{
-			"calculate": "parseInt(datum.value)", "as": "value2"
+			"joinaggregate": [
+			  	{"op": "min", "field": "value2", "as": "min"},
+			  	{"op": "max", "field": "value2", "as": "max"}
+			],
+			"groupby": ["key"]
 		},
 		{
 			"calculate": "(datum.value2 - datum.min) / (datum.max - datum.min)",
@@ -130,7 +130,7 @@
 		{
 			"encoding": {
 				"x": {"type": "nominal", "field": "key"},
-				"y": {"value": 150}
+				"y": {"value": 300}
 			},
 			"layer": [
 				{
@@ -147,7 +147,7 @@
 		{
 			"encoding": {
 				"x": {"type": "nominal", "field": "key"},
-				"y": {"value": 300}
+				"y": {"value": 600}
 			},
 			"layer": [
 				{
