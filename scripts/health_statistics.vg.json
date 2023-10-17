@@ -43,7 +43,10 @@
 			"groupby": ["key"]
 		},
 		{
-			"calculate": "(datum.value - datum.min) / (datum.max - datum.min)",
+			"calculate": "parseInt(datum.value)", "as": "value2"
+		},
+		{
+			"calculate": "(datum.value2 - datum.min) / (datum.max - datum.min)",
 			"as": "norm_val"
 		},
 		{
