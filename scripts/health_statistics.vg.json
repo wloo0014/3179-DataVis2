@@ -1,8 +1,12 @@
 {
 	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-	"title": "Different health statistics for different countries",
+	"title": {
+		"text": "Different health statistics for different countries",
+		"fontSize": 20,
+		"anchor": "middle"
+	},
 	"width": 1000,
-	"height": 600,
+	"height": 400,
 	"data": {
 		"url": "https://raw.githubusercontent.com/wloo0014/3179-DataVis2/main/data/life_expectancy_ASEAN_cleaned.csv",
 		"format": {
@@ -12,11 +16,14 @@
 				"Population": "number",
 				"Measles": "number",
 				"Polio": "number",
-				"Total_expenditure": "number",
+				"Total expenditure": "number",
 				"GDP": "number",
 				"BMI": "number",
-				"Schooling": "number",
-				"Life expectancy": "number"
+				"Life expectancy": "number",
+				"Infant deaths": "number",
+				"Under-five deaths": "number",
+				"Thinness": "number",
+				"Schooling": "number"
 			}
 		}
 	},
@@ -67,11 +74,17 @@
 			}
 		},
 		{
-			"mark": "line",
+			"mark": {
+				"type": "line",
+				"size": 3
+			},
 			"encoding": {
-				"color": {"type": "nominal", "field": "Country"},
+				"color": {
+					"field": "Country",
+					"scale": {"range": ["#e60049", "#0bb4ff", "#50e991", "#e6d800", "#9b19f5", "#ffa300", "#dc0ab4", "#b3d4ff", "#00bfa0", "#7c1158"]}
+				},
 				"detail": {"type": "nominal", "field": "index"},
-				"opacity": {"value": 0.3},
+				"opacity": {"value": 0.8},
 				"x": {"type": "nominal", "field": "key"},
 				"y": {"type": "quantitative", "field": "norm_val", "axis": null},
 				"tooltip": [
@@ -130,7 +143,7 @@
 		{
 			"encoding": {
 				"x": {"type": "nominal", "field": "key"},
-				"y": {"value": 300}
+				"y": {"value": 200}
 			},
 			"layer": [
 				{
@@ -147,7 +160,7 @@
 		{
 			"encoding": {
 				"x": {"type": "nominal", "field": "key"},
-				"y": {"value": 600}
+				"y": {"value": 400}
 			},
 			"layer": [
 				{
