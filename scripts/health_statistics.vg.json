@@ -1,11 +1,7 @@
 {
 	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-	"title": {
-		"text": "Different health statistics for different countries",
-		"fontSize": 20,
-		"anchor": "middle"
-	},
-	"width": 1000,
+
+	"width": 1300,
 	"height": 400,
 	"data": {
 		"url": "https://raw.githubusercontent.com/wloo0014/3179-DataVis2/main/data/life_expectancy_ASEAN_cleaned.csv",
@@ -81,7 +77,10 @@
 			"encoding": {
 				"color": {
 					"field": "Country",
-					"scale": {"range": ["#e60049", "#0bb4ff", "#50e991", "#e6d800", "#9b19f5", "#ffa300", "#dc0ab4", "#b3d4ff", "#00bfa0", "#7c1158"]}
+					"scale": {"range": ["#fd7f6f", "#7eb0d5", "#b2e061", "#bd7ebe", "#ffb55a", "#ffee65", "#beb9db", "#fdcce5", "#8bd3c7", "#0d88e6"]},
+					"legend": {
+						"labelFontSize": 12
+					}
 				},
 				"detail": {"type": "nominal", "field": "index"},
 				"opacity": {"value": 0.8},
@@ -181,6 +180,7 @@
 		"style": {
 		  	"label": {"baseline": "middle", "align": "right", "dx": -5},
 		  	"tick": {"orient": "horizontal"}
-		}
+		},
+		"legend": {"orient": "top", "layout": {"top": {"anchor": "middle"}}}
 	}
 }

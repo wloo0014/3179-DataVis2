@@ -1,10 +1,6 @@
 {
 	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-	"title": {
-		"text": "Total Expenditure vs Life Expectancy",
-		"fontSize": 20,
-		"anchor": "middle"
-	},
+
 	"width": "container",
 	"height": 1000,
 	"data": {
@@ -56,17 +52,23 @@
 				"x": {
 					"field": "Total expenditure",
 					"type": "quantitative",
-					"axis": {"format": "s"},
+					"axis": {"format": "s", "labelColor": "#4f594e", "titleColor": "#4f594e", "titleFontSize": 15},
 					"sort": "descending",
 					"scale": {
 						"domain": [0, 10]
-					}
+					},
+					"title": "Total Medical Expenditure (%)"
 				},
 				"color": {
 					"field": "Country",
-					"scale": {"range": ["#e60049", "#0bb4ff", "#50e991", "#e6d800", "#9b19f5", "#ffa300", "#dc0ab4", "#b3d4ff", "#00bfa0", "#7c1158"]},
+					"scale": {"range": ["#a6c09d"]},
 					"legend": null
-				}
+				},
+				"tooltip": [
+					{"field": "Country", "type": "nominal", "title": "Country"},
+					{"field": "Year", "type": "number", "title": "Year"},
+					{"field": "Total expenditure", "type": "quantitative", "format": ",", "title": "Total Expenditure (%)"}
+				]
 			}
 		},
 		{
@@ -75,7 +77,10 @@
 			"view": {"stroke": null},
 			"mark": {
 				"type": "text",
-				"align": "center"
+				"align": "center",
+				"fontSize": 15,
+				"fontStyle": "bold",
+				"color": "#4f594e"
 			},
 			"encoding": {
 				"y": {
@@ -106,16 +111,22 @@
 				"x": {
 					"field": "Life expectancy",
 					"type": "quantitative",
-					"axis": {"format": "s"},
+					"axis": {"format": "s", "labelColor": "#4f594e", "titleColor": "#4f594e", "titleFontSize": 15},
 					"scale": {
 						"domain": [50, 90]
-					}
+					},
+					"title": "Life Expectancy (Years)"
 				},
 				"color": {
 					"field": "Country",
-					"scale": {"range": ["#e60049", "#0bb4ff", "#50e991", "#e6d800", "#9b19f5", "#ffa300", "#dc0ab4", "#b3d4ff", "#00bfa0", "#7c1158"]},
+					"scale": {"range": ["#a6c09d"]},
 					"legend": {"orient": "top", "title": "Countries"}
-				}
+				},
+				"tooltip": [
+					{"field": "Country", "type": "nominal", "title": "Country"},
+					{"field": "Year", "type": "number", "title": "Year"},
+					{"field": "Life expectancy", "type": "quantitative", "title": "Life Expectancy (Years)"}
+				]
 			}
 		}
 	],

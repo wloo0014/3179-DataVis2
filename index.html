@@ -6,8 +6,13 @@
         <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
 
+        <!-- Google's Roboto font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
 		<!-- link to css -->
-		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/datavis2.css" />
 		<!-- link to javascript -->
 		<script src="scripts/datavis2.js"></script>
 
@@ -16,20 +21,114 @@
 	
     <body>
 		<!-- heading -->
-		<div id="heading">test</div>
+        <div>
+            <h1 id="title">Life Expectancy in South East Asia</h1>
+            <div id="titleDescription">
+                <p>
+                    See how the life expectancy of countries in South East Asia has changed between the year 2000 and 2015.
+                </p>
+            </div>
+        </div>
 
-		<!-- map visualisation -->
-        <div id="mapVis"></div>
+        <!-- MAP -->
+        <div class="flex-container">
+            <!-- map visualisation -->
+            <div id="mapVis" class="flex-child"></div>
+            <!-- map text -->
+            <div id="mapText" class="flex-child">
+                <p>
+                    The map on the left shows the life expectancy in years of countries in South East Asia from the year 2000 to 2015.
+                    Use the slider beneath the map to see how the life expectancy have improved throughout the years.
+                    Hover over each country to see more details about their population, GDP per capita and average BMI.
+                </p>
+                <p>
+                    Life expectancy in South East Asia has shown significant improvement over the past few decades, reflecting advancements in healthcare, sanitation, and overall living conditions.
+                    South East Asia is a diverse region, consisting of 10 countries, each with its unique characteristics, but there are some common trends when it comes to life expectancy in the region.
+                </p>
+                <p>
+                    Life expectancy varies widely between countries in South East Asia.
+                    For example, countries like Singapore and Brunei have life expectancies similar to developed Western nations, while others, such as Myanmar and Laos, have lower life expectancies.
+                    This discrepancy can largely be attributed to differences in healthcare infrastructure, access to education, and economic development.
+                </p>
+                <p>
+                    Investment in healthcare infrastructure has been a key driver of increased life expectancy in the region.
+                    Countries like Thailand and Malaysia have developed robust healthcare systems that provide access to quality medical care.
+                    These systems have not only increased life expectancy but also attracted medical tourists from around the world.
+                </p>
+            </div>
+        </div>
+
+        <h2 class="subtitle">Gross Domestic Product and Body Mass Index</h2>
+
+        <div id="gdpbmiText">
+            <p>
+                The two graphs underneath show the GDP per capita and average BMI of South East Asian Countries from 2000 to 2015.
+            </p>
+            <p>
+                The GDP of each country, on average, has increased between 2000 and 2015. Singapore, Brunei and Malaysia's GDP are by far the highest among all South East Asian Countries.
+            </p>
+            <p>
+                The BMI of each country is on a steady increase throughout the years. This is possibly due to the increased wealth leading to better food quality and healthy eating.
+            </p>
+            <p>
+                These two factors contribute to South East Asia's increase in life expectancy between 2000 and 2015.
+            </p>
+        </div>
+
+        <div class="flex-container">
+            <!-- GDP per year stacked area chart -->
+            <div id="gdpPerYear" class="flex-child"></div>
+
+            <!-- BMI per year line graph -->
+            <div id="bmiPerYear" class="flex-child"></div>
+        </div>
+
+        <h2 class="subtitle">Total Government Health Expenditure and Life Expectancy</h2>
         
-        <div id="gdpPerYear"></div>
-        
-        <div id="bmiPerYear"></div>
-        
+        <div id="totExpText">
+            <p>
+                The diverging graph below compares the total expenditure to life expectancy of countries in South East Asia.
+            </p>
+            <p>
+                The total expenditure is the percentage of government medical-health expenses to total government expenses.
+            </p>
+            <p>
+                Scroll through the year slider below to see if there is a correlation between the total expenditure and life expectancy!
+            </p>
+        </div>
+
         <div id="totExpenseLifeExpect"></div>
         
+        <h2 class="subtitle">Health Statistics of South East Asian Countries</h2>
+
+        <div id="healthStatsText">
+            <p>
+                The parallel coordinate plot below shows the different health statistics of countries in South East Asia. These include:
+            </p>
+            <p>
+                Infant deaths - the number of infant deaths per 1000 people.
+            </p>
+            <p>
+                Measles - the number of reported measles cases per 1000 people
+            </p>
+            <p>
+                Polio - the percentage of 1-year-olds immunized against polio.
+            </p>
+            <p>
+                Schooling - the average number of years that people study.
+            </p>
+            <p>
+                Thinness - the prevalence of thinness among people 1 to 19 years old in percentage.
+            </p>
+            <p>
+                Under-five deaths - the number of deaths of people under 5 years old per 1000 people.
+            </p>
+            As health and wealth improves throughout the years, the number of schooling years and immunization against Polio increases, while infant deaths, measles, thinness and under-five deaths decreases.
+            Scroll through the year slider below to see how these health statistics changes throughout the years.
+        </div>
+
         <div id="healthStatistics"></div>
         
-        <!-- <div id="gdpLifeExpectancy"></div> -->
 
     </body>
 </html>

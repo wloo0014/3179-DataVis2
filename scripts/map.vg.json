@@ -1,12 +1,14 @@
 {
 	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 	"title": {
-		"text": "South East Asia Average Life Expectancy (2000-2015)",
+		"text": "Map of South East Asia and the Life Expectancy (2000-2015)",
 		"fontSize": 20,
-		"anchor": "middle"
+		"font": "Roboto",
+		"anchor": "middle",
+		"color": "#4f594e"
 	},
 	"width": 800,
-	"height": 500,
+	"height": 700,
 	"projection": {"type": "mercator"},
 	"data": {
 		"url": "https://raw.githubusercontent.com/wloo0014/3179-DataVis2/main/data/life_expectancy_ASEAN_cleaned.csv",
@@ -63,17 +65,18 @@
 				"type": "threshold",
 				"domain": [60, 65, 70, 75]
 			},
-			"title": "Life Expectancy (Years)",
 			"legend": {
-				"orient": "left",
-				"offset": -150
+				"title": "Years",
+				"titleAlign": "left",
+				"offset": -20
 			}
 		},
 		"tooltip": [
 			{"field": "Country", "type": "nominal", "title": "Country"},
       		{"field": "Life expectancy", "type": "quantitative", "title": "Life Expectancy (Years)"},
-			{"field": "BMI", "type": "quantitative", "title": "BMI"},
-			{"field": "roundedGDP", "type": "quantitative", "format": ",", "title": "GDP per capita ($USD)"}
+			{"field": "Population", "type": "quantitative", "format": ".2s", "title": "Population"},
+			{"field": "roundedGDP", "type": "quantitative", "format": ",", "title": "GDP per capita ($USD)"},
+			{"field": "BMI", "type": "quantitative", "title": "Average BMI"}
 		]
 	},
 	"config": {

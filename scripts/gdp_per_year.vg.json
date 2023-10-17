@@ -1,11 +1,12 @@
 {
 	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 	"title": {
-		"text": "GDP (per capita) of South East Asian Countries (2000-2015)",
+		"text": "GDP (per capita) of SEA Countries",
 		"fontSize": 20,
-		"anchor": "middle"
+		"anchor": "middle",
+		"color": "#4f594e"
 	},
-	"width": 800,
+	"width": 550,
 	"height": 400,
 	"data": {
 		"url": "https://raw.githubusercontent.com/wloo0014/3179-DataVis2/main/data/life_expectancy_ASEAN_cleaned.csv",
@@ -30,7 +31,8 @@
   	"encoding": {
     	"x": {
 			"type": "temporal",
-			"field": "Year"
+			"field": "Year",
+			"axis": {"labelColor": "#4f594e", "titleColor": "#4f594e", "titleFontSize": 15}
 		},
     	"y": {
 			"field": "GDP",
@@ -39,13 +41,20 @@
 				"type": "linear"
 			},
 			"axis": {
-				"format": ".2s"
+				"format": ".2s",
+				"labelColor": "#4f594e",
+				"titleColor": "#4f594e",
+				"titleFontSize": 15
 			},
 			"title": "GDP per capita ($USD)"
 		},
     	"color": {
 			"field": "Country",
-			"scale": {"range": ["#e60049", "#0bb4ff", "#50e991", "#e6d800", "#9b19f5", "#ffa300", "#dc0ab4", "#b3d4ff", "#00bfa0", "#7c1158"]}
+			"scale": {"range": ["#fd7f6f", "#7eb0d5", "#b2e061", "#bd7ebe", "#ffb55a", "#ffee65", "#beb9db", "#fdcce5", "#8bd3c7", "#0d88e6"]},
+			"legend": {
+				"labelFontSize": 12,
+				"labelBaseline": "middle"
+			}
 		},
 		"order": {
 			"field": "country_order",
